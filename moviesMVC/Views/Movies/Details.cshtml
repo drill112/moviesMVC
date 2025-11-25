@@ -1,0 +1,18 @@
+﻿@model moviesMVC.Models.Movie
+
+<h2>Подробная информация</h2>
+
+<div>
+    <h3>@Model.Title (@Model.Year)</h3>
+
+    <p><strong>Режиссёр:</strong> @Model.Director</p>
+    <p><strong>Жанр:</strong> @Model.Genre</p>
+    <p><strong>Описание:</strong> @Model.Description</p>
+
+    @if (!string.IsNullOrEmpty(Model.PosterUrl))
+    {
+        <img src="@Model.PosterUrl" width="250" />
+    }
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Назад</a>

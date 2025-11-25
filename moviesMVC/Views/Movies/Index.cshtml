@@ -1,36 +1,35 @@
 ﻿@model IEnumerable<moviesMVC.Models.Movie>
 
-@{
-    ViewData["Title"] = "10 лучших фильмов";
-}
+<h1>Десятка лучших фильмов</h1>
 
-<h2 class="mb-4">10 лучших фильмов</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">Добавить фильм</a>
+</p>
 
-<div class="row g-4">
-@foreach (var movie in Model)
-{
-    <div class="col-12 col-sm-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-            <img src="@(string.IsNullOrWhiteSpace(movie.PosterUrl) ? "/images/no-poster.png" : movie.PosterUrl)"
-                 class="card-img-top" alt="@movie.Title" />
-            <div class="card-body">
-                <h5 class="card-title">@movie.Title (@movie.Year)</h5>
-
-                @if (!string.IsNullOrWhiteSpace(movie.Director))
-                {
-                    <p class="card-text"><strong>Режиссёр:</strong> @movie.Director</p>
-                }
-                @if (!string.IsNullOrWhiteSpace(movie.Genre))
-                {
-                    <p class="card-text"><strong>Жанр:</strong> @movie.Genre</p>
-                }
-                @if (!string.IsNullOrWhiteSpace(movie.Description))
-                {
-                    <p class="card-text">@movie.Description</p>
-                }
-            </div>
-        </div>
-    </div>
-}
-</div>
-
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Режиссёр</th>
+            <th>Жанр</th>
+            <th>Год</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Director</td>
+                <td>@item.Genre</td>
+                <td>@item.Year</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
