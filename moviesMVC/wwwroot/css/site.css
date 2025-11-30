@@ -29,3 +29,13 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+.text-danger {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+input.input-validation-error,
+textarea.input-validation-error {
+    border-color: #d9534f;
+    background-color: #ffe6e6;
+}
